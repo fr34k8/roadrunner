@@ -12,7 +12,7 @@ require (
 	github.com/roadrunner-server/amqp/v3 v3.0.0-beta.2
 	github.com/roadrunner-server/beanstalk/v3 v3.0.0-beta.2
 	github.com/roadrunner-server/boltdb/v3 v3.0.0-beta.1
-	github.com/roadrunner-server/centrifuge/v3 v3.0.0-alpha.3
+	github.com/roadrunner-server/centrifuge/v3 v3.0.0-beta.2
 	github.com/roadrunner-server/config/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/endure v1.4.5
 	github.com/roadrunner-server/errors v1.2.0
@@ -194,7 +194,7 @@ require (
 	github.com/xujiajun/nutsdb v0.10.0 // indirect
 	github.com/xujiajun/utils v0.0.0-20220904132955-5f7c5b914235 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
-	go.buf.build/grpc/go/roadrunner-server/api v1.4.20 // indirect
+	go.buf.build/grpc/go/roadrunner-server/api v1.4.21 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
@@ -230,7 +230,7 @@ require (
 	golang.org/x/time v0.1.0 // indirect
 	golang.org/x/tools v0.2.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20221025140454-527a21cfbd71 // indirect
+	google.golang.org/genproto v0.0.0-20221027153422-115e99e71e1c // indirect
 	google.golang.org/grpc v1.50.1 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
