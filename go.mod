@@ -12,7 +12,7 @@ require (
 	github.com/roadrunner-server/amqp/v3 v3.0.0-beta.2
 	github.com/roadrunner-server/beanstalk/v3 v3.0.0-beta.2
 	github.com/roadrunner-server/boltdb/v3 v3.0.0-beta.1
-	github.com/roadrunner-server/centrifuge/v3 v3.0.0-alpha.3
+	github.com/roadrunner-server/centrifuge/v3 v3.0.0-beta.4
 	github.com/roadrunner-server/config/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/endure v1.4.5
 	github.com/roadrunner-server/errors v1.2.0
@@ -38,7 +38,7 @@ require (
 	github.com/roadrunner-server/reload/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/resetter/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/rpc/v3 v3.0.0-beta.1
-	github.com/roadrunner-server/sdk/v3 v3.0.0-beta.4
+	github.com/roadrunner-server/sdk/v3 v3.0.0-beta.5
 	github.com/roadrunner-server/send/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/server/v3 v3.0.0-beta.4
 	github.com/roadrunner-server/service/v3 v3.0.0-beta.1
@@ -50,7 +50,6 @@ require (
 	github.com/spf13/viper v1.13.0
 	github.com/stretchr/testify v1.8.1
 	github.com/temporalio/roadrunner-temporal/v2 v2.0.0-beta.3
-	go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.20
 )
 
 require (
@@ -161,7 +160,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/pquerna/cachecontrol v0.1.0 // indirect
-	github.com/prometheus/client_golang v1.13.0 // indirect
+	github.com/prometheus/client_golang v1.13.1 // indirect
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
@@ -194,7 +193,8 @@ require (
 	github.com/xujiajun/nutsdb v0.10.0 // indirect
 	github.com/xujiajun/utils v0.0.0-20220904132955-5f7c5b914235 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
-	go.buf.build/grpc/go/roadrunner-server/api v1.4.20 // indirect
+	go.buf.build/grpc/go/roadrunner-server/api v1.4.27 // indirect
+	go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.27 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
@@ -230,7 +230,7 @@ require (
 	golang.org/x/time v0.1.0 // indirect
 	golang.org/x/tools v0.2.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20221025140454-527a21cfbd71 // indirect
+	google.golang.org/genproto v0.0.0-20221027153422-115e99e71e1c // indirect
 	google.golang.org/grpc v1.50.1 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
