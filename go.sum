@@ -567,8 +567,8 @@ github.com/prometheus/client_golang v1.11.0/go.mod h1:Z6t4BnS23TR94PD6BsDNk8yVqr
 github.com/prometheus/client_golang v1.11.1/go.mod h1:Z6t4BnS23TR94PD6BsDNk8yVqroYurpAkEiz0P2BEV0=
 github.com/prometheus/client_golang v1.12.1/go.mod h1:3Z9XVyYiZYEO+YQWt3RD2R3jrbd179Rt297l4aS6nDY=
 github.com/prometheus/client_golang v1.12.2/go.mod h1:3Z9XVyYiZYEO+YQWt3RD2R3jrbd179Rt297l4aS6nDY=
-github.com/prometheus/client_golang v1.13.0 h1:b71QUfeo5M8gq2+evJdTPfZhYMAU0uKPkyPJ7TPsloU=
-github.com/prometheus/client_golang v1.13.0/go.mod h1:vTeo+zgvILHsnnj/39Ou/1fPN5nJFOEMgftOUOmlvYQ=
+github.com/prometheus/client_golang v1.13.1 h1:3gMjIY2+/hzmqhtUC/aQNYldJA6DtH3CgQvwS+02K1c=
+github.com/prometheus/client_golang v1.13.1/go.mod h1:vTeo+zgvILHsnnj/39Ou/1fPN5nJFOEMgftOUOmlvYQ=
 github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910/go.mod h1:MbSGuTsp3dbXC40dX6PRTWyKYBIrTGTE9sqQNg2J8bo=
 github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
@@ -629,8 +629,8 @@ github.com/roadrunner-server/jobs/v3 v3.0.0-beta.2 h1:4vY6Q+qyVwOJ+8pSWCowPci4tr
 github.com/roadrunner-server/jobs/v3 v3.0.0-beta.2/go.mod h1:cZyq0Xg6H8LT+ccUI49cN8T5pWRIvHGtsuv1S9KQRSI=
 github.com/roadrunner-server/kafka/v3 v3.0.0-beta.1 h1:Nj0o16taKb5XFY9uRCgxeqfLWfKyfJa4Rhd4duzuOoQ=
 github.com/roadrunner-server/kafka/v3 v3.0.0-beta.1/go.mod h1:9Uak7B4EocuAFqWTsEyIhDI0nlxXqK6ryZx/w32c8Tg=
-github.com/roadrunner-server/kv/v3 v3.0.0-beta.1 h1:4Uh9Wt2l9AEHMAwJxZreKPpz1K3jLPtgbnyl1b3OOWo=
-github.com/roadrunner-server/kv/v3 v3.0.0-beta.1/go.mod h1:Tb3fbRW1TDNj2pou47a4Hwp7XOYVL3Idsgfz6cWm1H8=
+github.com/roadrunner-server/kv/v3 v3.0.0 h1:r28sa2mJ8g7uCgP7b40oVPMSOjiltQVOMnDPRwtip78=
+github.com/roadrunner-server/kv/v3 v3.0.0/go.mod h1:tJWzmH7N4mtHm4loLfX2R+hXcgXYIPqnZ7qXhGuo/4U=
 github.com/roadrunner-server/logger/v3 v3.0.0-beta.1 h1:KcU5a7alGoufG4BjRPrStWuv08wIgWbL5kwRZ02ipdM=
 github.com/roadrunner-server/logger/v3 v3.0.0-beta.1/go.mod h1:eBEk/3Y2rsKfEXH0RP7LP7f8ZtAujYi/uqP2eIKtC28=
 github.com/roadrunner-server/memcached/v3 v3.0.0-beta.1 h1:YHW9hKeZyBt2lRTzyLofdeTrY22JC+lg/FkiWccfhiM=
@@ -655,8 +655,8 @@ github.com/roadrunner-server/resetter/v3 v3.0.0-beta.1 h1:PeW5ikz/8YEjzSB/6WKVu/
 github.com/roadrunner-server/resetter/v3 v3.0.0-beta.1/go.mod h1:+6pgq8TUvcQDsC1R4axEgjDhJTFzKzF2A95LvgRMDAI=
 github.com/roadrunner-server/rpc/v3 v3.0.0-beta.1 h1:fN/AuR35J8kFi/cGlqhMlXz97BU4FVQ3zdNpxGxPTTE=
 github.com/roadrunner-server/rpc/v3 v3.0.0-beta.1/go.mod h1:NkaVTpZzJLRa+ya6k4ArFUOJAeWmTK9lxtjC0EVBsUY=
-github.com/roadrunner-server/sdk/v3 v3.0.0-beta.4 h1:jrBpY72kXYTkfQ00RME2HaW/m9+L4jYLujdkhW2/uwE=
-github.com/roadrunner-server/sdk/v3 v3.0.0-beta.4/go.mod h1:QnhQ/Ib3uYXSVF0N9F7Accozx/nLkvRdGgufOJq5WfA=
+github.com/roadrunner-server/sdk/v3 v3.0.0-beta.5 h1:W/9zfXCVPPFnsgG85CfCQI1VPU2WKIvzEswNiQY8um0=
+github.com/roadrunner-server/sdk/v3 v3.0.0-beta.5/go.mod h1:nvrWJPZPJXUreLpPPyxvsfVupDh3RCq1rZWMZPXFnKA=
 github.com/roadrunner-server/send/v3 v3.0.0-beta.1 h1:7KwjSFzASAS7e5QwVJkdDr46xFrZDYbwLmgt+hQJCT4=
 github.com/roadrunner-server/send/v3 v3.0.0-beta.1/go.mod h1:3Q5+HLG1qvzSQAK0n5o066vFuZOesij+0Oa48kgjR44=
 github.com/roadrunner-server/server/v3 v3.0.0-beta.4 h1:D8GziWLNX+B5Hp7dL2dtBGg3T3I7yMu2Fq7JkhTPLeo=
@@ -779,8 +779,8 @@ github.com/yusufpapurcu/wmi v1.2.2 h1:KBNDSne4vP5mbSWnJbO+51IMOXJB67QiYCSBrubbPR
 github.com/yusufpapurcu/wmi v1.2.2/go.mod h1:SBZ9tNy3G9/m5Oi98Zks0QjeHVDvuK0qfxQmPyzfmi0=
 go.buf.build/grpc/go/roadrunner-server/api v1.4.20 h1:61Qkh0qmbx1dow5cuNIMS1yC1WPR2CGBq7Pl5CuFyoU=
 go.buf.build/grpc/go/roadrunner-server/api v1.4.20/go.mod h1:gydvLOEhY1OyTQFdpzBvDRn2QMpmtb73BSFFKu3JmPk=
-go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.20 h1:OkFihJEHVgJL8jvuSsx2CRLvVWNS30OJPJ9yw/A0Ou0=
-go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.20/go.mod h1:CfIAvR+W2N+Y0WXMzwT80Eh83CmBPWplgFQDA5HftC4=
+go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.27 h1:uzUfnSi//HSGB8lM3Vh0EKxolASymEnRbxplfVxRmxY=
+go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.27/go.mod h1:CfIAvR+W2N+Y0WXMzwT80Eh83CmBPWplgFQDA5HftC4=
 go.etcd.io/bbolt v1.3.6 h1:/ecaJf0sk1l4l6V4awd65v2C3ILy7MSj+s/x1ADCIMU=
 go.etcd.io/bbolt v1.3.6/go.mod h1:qXsaaIqmgQH0T+OPdb99Bf+PKfBBQVAdyD6TY9G8XM4=
 go.etcd.io/etcd/api/v3 v3.5.4/go.mod h1:5GB2vv4A4AOn3yk7MftYGHkUfGtDHnEraIjym4dYz5A=
