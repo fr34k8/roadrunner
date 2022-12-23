@@ -17,7 +17,7 @@ require (
 	github.com/roadrunner-server/endure v1.4.5
 	github.com/roadrunner-server/errors v1.2.0
 	github.com/roadrunner-server/fileserver/v3 v3.0.0-beta.2
-	github.com/roadrunner-server/goridge/v3 v3.6.1
+	github.com/roadrunner-server/goridge/v3 v3.6.2
 	github.com/roadrunner-server/grpc/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/gzip/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/headers/v3 v3.0.0-beta.3
@@ -38,10 +38,10 @@ require (
 	github.com/roadrunner-server/reload/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/resetter/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/rpc/v3 v3.0.0-beta.1
-	github.com/roadrunner-server/sdk/v3 v3.0.0-beta.4
+	github.com/roadrunner-server/sdk/v3 v3.0.1
 	github.com/roadrunner-server/send/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/server/v3 v3.0.0-beta.4
-	github.com/roadrunner-server/service/v3 v3.0.0-beta.1
+	github.com/roadrunner-server/service/v3 v3.0.5
 	github.com/roadrunner-server/sqs/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/static/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/status/v3 v3.0.0-beta.1
@@ -50,7 +50,6 @@ require (
 	github.com/spf13/viper v1.13.0
 	github.com/stretchr/testify v1.8.1
 	github.com/temporalio/roadrunner-temporal/v2 v2.0.0-beta.3
-	go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.20
 )
 
 require (
@@ -103,7 +102,7 @@ require (
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/go-redis/redis/v9 v9.0.0-rc.1 // indirect
-	github.com/goccy/go-json v0.9.11 // indirect
+	github.com/goccy/go-json v0.10.0 // indirect
 	github.com/gofiber/fiber/v2 v2.39.0 // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
@@ -161,14 +160,14 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/pquerna/cachecontrol v0.1.0 // indirect
-	github.com/prometheus/client_golang v1.13.0 // indirect
+	github.com/prometheus/client_golang v1.14.0 // indirect
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rabbitmq/amqp091-go v1.5.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rivo/uniseg v0.4.2 // indirect
-	github.com/roadrunner-server/tcplisten v1.2.0 // indirect
+	github.com/roadrunner-server/tcplisten v1.2.1 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
@@ -180,8 +179,8 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
-	github.com/tklauser/go-sysconf v0.3.10 // indirect
-	github.com/tklauser/numcpus v0.5.0 // indirect
+	github.com/tklauser/go-sysconf v0.3.11 // indirect
+	github.com/tklauser/numcpus v0.6.0 // indirect
 	github.com/twmb/murmur3 v1.1.6 // indirect
 	github.com/uber-go/tally/v4 v4.1.3 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
@@ -195,6 +194,7 @@ require (
 	github.com/xujiajun/utils v0.0.0-20220904132955-5f7c5b914235 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	go.buf.build/grpc/go/roadrunner-server/api v1.4.20 // indirect
+	go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.27 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
@@ -219,13 +219,13 @@ require (
 	go.temporal.io/sdk/contrib/tally v0.2.0 // indirect
 	go.temporal.io/server v1.18.3 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
-	go.uber.org/multierr v1.8.0 // indirect
-	go.uber.org/zap v1.23.0 // indirect
+	go.uber.org/multierr v1.9.0 // indirect
+	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
 	golang.org/x/mod v0.6.0 // indirect
 	golang.org/x/net v0.1.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.1.0 // indirect
+	golang.org/x/sys v0.3.0 // indirect
 	golang.org/x/text v0.4.0 // indirect
 	golang.org/x/time v0.1.0 // indirect
 	golang.org/x/tools v0.2.0 // indirect
