@@ -25,7 +25,7 @@ require (
 	github.com/roadrunner-server/informer/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/jobs/v3 v3.0.0-beta.2
 	github.com/roadrunner-server/kafka/v3 v3.0.0-beta.1
-	github.com/roadrunner-server/kv/v3 v3.0.0-beta.1
+	github.com/roadrunner-server/kv/v3 v3.1.0
 	github.com/roadrunner-server/logger/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/memcached/v3 v3.0.0-beta.1
 	github.com/roadrunner-server/memory/v3 v3.0.0-beta.2
@@ -50,7 +50,6 @@ require (
 	github.com/spf13/viper v1.13.0
 	github.com/stretchr/testify v1.8.1
 	github.com/temporalio/roadrunner-temporal/v2 v2.0.0-beta.3
-	go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.20
 )
 
 require (
@@ -168,6 +167,8 @@ require (
 	github.com/rabbitmq/amqp091-go v1.5.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rivo/uniseg v0.4.2 // indirect
+	github.com/roadrunner-server/api/v3 v3.1.2 // indirect
+	github.com/roadrunner-server/endure/v2 v2.0.0-beta.1 // indirect
 	github.com/roadrunner-server/tcplisten v1.2.0 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529 // indirect
@@ -195,6 +196,7 @@ require (
 	github.com/xujiajun/utils v0.0.0-20220904132955-5f7c5b914235 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	go.buf.build/grpc/go/roadrunner-server/api v1.4.20 // indirect
+	go.buf.build/protocolbuffers/go/roadrunner-server/api v1.3.27 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
@@ -219,8 +221,8 @@ require (
 	go.temporal.io/sdk/contrib/tally v0.2.0 // indirect
 	go.temporal.io/server v1.18.3 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
-	go.uber.org/multierr v1.8.0 // indirect
-	go.uber.org/zap v1.23.0 // indirect
+	go.uber.org/multierr v1.9.0 // indirect
+	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
 	golang.org/x/mod v0.6.0 // indirect
 	golang.org/x/net v0.1.0 // indirect
