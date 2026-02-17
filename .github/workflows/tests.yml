@@ -1,12 +1,10 @@
 name: rr_cli_tests
-
 on:
   push:
     branches:
       - master
       - stable
   pull_request:
-
 jobs:
   golangci-lint:
     name: Golang-CI (lint)
@@ -14,18 +12,15 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-
       - name: Set up Go
         uses: actions/setup-go@v6 # action page: <https://github.com/actions/setup-go>
         with:
           go-version: stable
-
       - name: Run linter
         uses: golangci/golangci-lint-action@v9
         with:
           only-new-issues: false # show only new issues if it's a pull request
           args: -v --build-tags=race --timeout=10m
-
   go-test:
     name: Unit tests
     runs-on: ubuntu-latest
@@ -34,79 +29,63 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: stable
-
       - name: Check out code
         uses: actions/checkout@v6
         with:
           fetch-depth: 2 # Fixes codecov error 'Issue detecting commit SHA'
-
       - name: Init Go modules Cache # Docs: <https://git.io/JfAKn#go---modules>
         uses: actions/cache@v5
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: ${{ runner.os }}-go-
-
       - name: Install Go dependencies
         run: go mod download
-
       - name: Run Unit tests
         run: go test -race -covermode=atomic -coverprofile /tmp/coverage.txt ./...
-
       - name: Upload Coverage report to CodeCov
         continue-on-error: true
         uses: codecov/codecov-action@v5.5.2 # https://github.com/codecov/codecov-action
         with:
           files: /tmp/coverage.txt
-
   build:
     name: Build for ${{ matrix.os }}
     runs-on: ubuntu-latest
-    needs: [ go-test ]
+    needs: [go-test]
     strategy:
       fail-fast: false
       matrix:
-        os: [ linux, darwin, windows, freebsd ]
+        os: [linux, darwin, windows, freebsd]
     steps:
       - name: Set up Go
         uses: actions/setup-go@v6 # action page: <https://github.com/actions/setup-go>
         with:
           go-version: stable
-
       - name: Check out code
         uses: actions/checkout@v6
-
       - name: Init Go modules Cache # Docs: <https://git.io/JfAKn#go---modules>
         uses: actions/cache@v5
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: ${{ runner.os }}-go-
-
       - name: Install Go dependencies
         run: go mod download && go mod verify
-
       - name: Generate version value
         id: values # for PR this value will be `merge@__hash__`, SO: <https://stackoverflow.com/a/59780579/2252921>
         run: |
           echo "version=$(echo ${GITHUB_REF##*/} | sed -e 's/^[vV ]*//')" >> $GITHUB_OUTPUT
           echo "timestamp=$(echo $(date +%FT%T%z))" >> $GITHUB_OUTPUT
-
       - name: Compile binary file
         env:
           GOOS: ${{ matrix.os }}
           GOARCH: amd64
           CGO_ENABLED: 0
-          GOEXPERIMENT: greenteagc
-          LDFLAGS: -s
-            -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=${{ steps.values.outputs.version }}
-            -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=${{ steps.values.outputs.timestamp }}
+          LDFLAGS: -s -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=${{ steps.values.outputs.version }} -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=${{ steps.values.outputs.timestamp }}
         run: go build -trimpath -ldflags "$LDFLAGS" -o ./rr ./cmd/rr
-
       - name: Try to execute
         if: matrix.os == 'linux'
         run: ./rr -v
-
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
@@ -114,21 +93,17 @@ jobs:
           path: ./rr
           if-no-files-found: error
           retention-days: 10
-
   docker-image:
     name: Build docker image
     runs-on: ubuntu-latest
-    needs: [ go-test ]
+    needs: [go-test]
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-
       - name: Build image
         run: docker build -t rr:local -f ./Dockerfile .
-
       - name: Try to execute
         run: docker run --rm rr:local -v
-
       - uses: aquasecurity/trivy-action@0.34.0 # action page: <https://github.com/aquasecurity/trivy-action>
         with:
           image-ref: rr:local

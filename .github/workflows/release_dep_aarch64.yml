@@ -1,11 +1,9 @@
 name: release_dep_arm64
-
 on:
   release: # Docs: <https://help.github.com/en/articles/events-that-trigger-workflows#release-event-release>
     types:
       - released
       - prereleased
-
 jobs:
   build:
     name: Build for ${{ matrix.os }} (${{ matrix.arch }}, ${{ matrix.compiler }})
@@ -13,22 +11,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ linux ]
-        compiler: [ gcc ]
-        arch: [ arm64 ]
-
+        os: [linux]
+        compiler: [gcc]
+        arch: [arm64]
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
           go-version: stable
-
       - name: Download dependencies
         run: go mod download
-
       - name: Generate builder values
         id: values
         run: |
@@ -36,7 +30,6 @@ jobs:
           echo "timestamp=$(echo $(date +%FT%T%z))" >> $GITHUB_OUTPUT
           echo "binary-name=rr" >> $GITHUB_OUTPUT
           echo "sign-cert-name=rr.asc" >> $GITHUB_OUTPUT
-
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
         with:
@@ -44,7 +37,6 @@ jobs:
           passphrase: ${{ secrets.GPG_PASS }}
           git_user_signingkey: true
           git_commit_gpgsign: false
-
       - name: Compile binary file
         env:
           GOOS: ${{ matrix.os }}
@@ -53,25 +45,19 @@ jobs:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
           GPG_PASS: ${{secrets.GPG_PASS}}
           CGO_ENABLED: 0
-          GOEXPERIMENT: greenteagc
           LDFLAGS: >-
-            -s
-            -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=${{ steps.values.outputs.version }}
-            -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=${{ steps.values.outputs.timestamp }}
+            -s -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=${{ steps.values.outputs.version }} -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=${{ steps.values.outputs.timestamp }}
         run: |
           go build -trimpath -ldflags "$LDFLAGS" -o "./${{ steps.values.outputs.binary-name }}" ./cmd/rr
           stat "./${{ steps.values.outputs.binary-name }}"
           gpg --detach-sign --armor "./${{ steps.values.outputs.binary-name }}"
-
       - name: Create DEB dirs
         run: |
           mkdir -p dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64/DEBIAN
           mkdir -p dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64/usr/bin
           ls -la dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64
-
       - name: Create DEB control file
         run: touch dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64/DEBIAN/control
-
       - name: Build Debian package
         run: |
           echo "Package: roadrunner-${{ steps.values.outputs.version }}-linux-arm64.deb" >> dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64/DEBIAN/control
@@ -86,7 +72,6 @@ jobs:
 
           cp "./${{ steps.values.outputs.binary-name }}" dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64/usr/bin/
           dpkg --build dist/ubuntu/roadrunner-${{ steps.values.outputs.version }}-linux-arm64
-
       - name: Upload dep to release
         uses: svenstaro/upload-release-action@v2
         with:
