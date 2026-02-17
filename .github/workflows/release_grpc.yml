@@ -1,11 +1,9 @@
 name: release_grpc
-
 on:
   release: # Docs: <https://help.github.com/en/articles/events-that-trigger-workflows#release-event-release>
     types:
       - prereleased
       - released
-
 jobs:
   build:
     name: Build for ${{ matrix.os }} (${{ matrix.arch }}, ${{ matrix.compiler }})
@@ -13,10 +11,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ windows, darwin ] # linux, darwin, windows
-        compiler: [ gcc ] # gcc, musl-gcc
-        archiver: [ zip ] # tar, zip
-        arch: [ amd64 ]   # amd64, 386
+        os: [windows, darwin] # linux, darwin, windows
+        compiler: [gcc] # gcc, musl-gcc
+        archiver: [zip] # tar, zip
+        arch: [amd64] # amd64, 386
         include:
           - os: linux
             compiler: gcc
@@ -47,19 +45,15 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: stable
-
       - name: Check out code
         uses: actions/checkout@v6
         with:
           repository: 'roadrunner-server/grpc'
-
       - name: Install musl
         if: matrix.compiler == 'musl-gcc'
         run: sudo apt-get install -y musl-tools
-
       - name: Download dependencies
         run: cd protoc_plugins && go mod download
-
       - name: Generate builder values
         id: values
         run: |
@@ -71,7 +65,6 @@ jobs:
           else
             echo "sign-cert-name=protoc-gen-php-grpc.asc" >> $GITHUB_OUTPUT
           fi
-
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
         with:
@@ -79,7 +72,6 @@ jobs:
           passphrase: ${{ secrets.GPG_PASS }}
           git_user_signingkey: true
           git_commit_gpgsign: false
-
       - name: Compile binary file
         env:
           GOOS: ${{ matrix.os }}
@@ -92,13 +84,14 @@ jobs:
           cd protoc_plugins && go build -trimpath -ldflags "$LDFLAGS" -o "../${{ steps.values.outputs.binary-name }}" protoc-gen-php-grpc/main.go
           stat "../${{ steps.values.outputs.binary-name }}"
           gpg --detach-sign --armor "../${{ steps.values.outputs.binary-name }}"
-
       - name: Generate distributive directory name
         id: dist-dir
         run: >
           echo "name=$(echo protoc-gen-php-grpc-${{ steps.values.outputs.version }}-$(
+
             [ ${{ matrix.os }} != '' ] && echo '${{ matrix.os }}' || echo 'unknown'
           )$(
+
             [ ${{ matrix.compiler }} = 'musl-gcc' ] && echo '-musl'
           ))-${{ matrix.arch }}" >> $GITHUB_OUTPUT
 
@@ -106,6 +99,7 @@ jobs:
         id: dist-arch
         run: >
           echo "name=$(echo ${{ steps.dist-dir.outputs.name }}.$(
+
             case ${{ matrix.archiver }} in
               zip) echo 'zip';;
               tar) echo 'tar.gz';;
@@ -117,15 +111,12 @@ jobs:
         run: |
           mkdir ${{ steps.dist-dir.outputs.name }}
           mv "./${{ steps.values.outputs.binary-name }}"  "./${{ steps.values.outputs.sign-cert-name }}" ./${{ steps.dist-dir.outputs.name }}/
-
       - name: Pack distributive using tar
         if: matrix.archiver == 'tar'
         run: tar -zcf "${{ steps.dist-arch.outputs.name }}" "${{ steps.dist-dir.outputs.name }}"
-
       - name: Pack distributive using zip
         if: matrix.archiver == 'zip'
         run: zip -r -q "${{ steps.dist-arch.outputs.name }}" "${{ steps.dist-dir.outputs.name }}"
-
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
@@ -133,7 +124,6 @@ jobs:
           path: ${{ steps.dist-arch.outputs.name }}
           if-no-files-found: error
           retention-days: 30
-
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:

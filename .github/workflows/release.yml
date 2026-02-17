@@ -1,11 +1,9 @@
 name: release
-
 on:
   release: # Docs: <https://help.github.com/en/articles/events-that-trigger-workflows#release-event-release>
     types:
       - released
       - prereleased
-
 jobs:
   build:
     name: Build for ${{ matrix.os }} (${{ matrix.arch }}, ${{ matrix.compiler }})
@@ -13,10 +11,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ windows, darwin ] # linux, darwin, windows
-        compiler: [ gcc ] # gcc, musl-gcc
-        archiver: [ zip ] # tar, zip
-        arch: [ amd64 ]   # amd64, 386
+        os: [windows, darwin] # linux, darwin, windows
+        compiler: [gcc] # gcc, musl-gcc
+        archiver: [zip] # tar, zip
+        arch: [amd64] # amd64, 386
         include:
           - os: linux
             compiler: gcc
@@ -47,17 +45,13 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: stable
-
       - name: Check out code
         uses: actions/checkout@v6
-
       - name: Install musl
         if: matrix.compiler == 'musl-gcc'
         run: sudo apt-get install -y musl-tools
-
       - name: Download dependencies
         run: go mod download # `-x` means "verbose" mode
-
       - name: Generate builder values
         id: values
         run: |
@@ -69,7 +63,6 @@ jobs:
           else
             echo "sign-cert-name=rr.asc" >> $GITHUB_OUTPUT
           fi
-
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
         with:
@@ -77,7 +70,6 @@ jobs:
           passphrase: ${{ secrets.GPG_PASS }}
           git_user_signingkey: true
           git_commit_gpgsign: false
-
       - name: Compile binary file
         env:
           GOOS: ${{ matrix.os }}
@@ -86,22 +78,24 @@ jobs:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
           GPG_PASS: ${{secrets.GPG_PASS}}
           CGO_ENABLED: 0
-          GOEXPERIMENT: greenteagc
           LDFLAGS: >-
-            -s
-            -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=${{ steps.values.outputs.version }}
-            -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=${{ steps.values.outputs.timestamp }}
+            -s -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.version=${{ steps.values.outputs.version }} -X github.com/roadrunner-server/roadrunner/v2025/internal/meta.buildTime=${{ steps.values.outputs.timestamp }}
         run: |
           go build -trimpath -ldflags "$LDFLAGS" -o "./${{ steps.values.outputs.binary-name }}" ./cmd/rr
           stat "./${{ steps.values.outputs.binary-name }}"
           gpg --detach-sign --armor "./${{ steps.values.outputs.binary-name }}"
-
       - name: Generate distributive directory name
         id: dist-dir
         run: >
           echo "name=$(echo roadrunner-${{ steps.values.outputs.version }}-$(
+
+
+
             [ ${{ matrix.os }} != '' ] && echo '${{ matrix.os }}' || echo 'unknown'
           )$(
+
+
+
             [ ${{ matrix.compiler }} = 'musl-gcc' ] && echo '-musl'
           ))-${{ matrix.arch }}" >> $GITHUB_OUTPUT
 
@@ -109,6 +103,9 @@ jobs:
         id: dist-arch
         run: >
           echo "name=$(echo ${{ steps.dist-dir.outputs.name }}.$(
+
+
+
             case ${{ matrix.archiver }} in
               zip) echo 'zip';;
               tar) echo 'tar.gz';;
@@ -121,15 +118,12 @@ jobs:
           mkdir ${{ steps.dist-dir.outputs.name }}
           mv "./${{ steps.values.outputs.binary-name }}"  "./${{ steps.values.outputs.sign-cert-name }}" ./${{ steps.dist-dir.outputs.name }}/
           cp  ./README.md ./CHANGELOG.md ./LICENSE ./${{ steps.dist-dir.outputs.name }}
-
       - name: Pack distributive using tar
         if: matrix.archiver == 'tar'
         run: tar -zcf "${{ steps.dist-arch.outputs.name }}" "${{ steps.dist-dir.outputs.name }}"
-
       - name: Pack distributive using zip
         if: matrix.archiver == 'zip'
         run: zip -r -q "${{ steps.dist-arch.outputs.name }}" "${{ steps.dist-dir.outputs.name }}"
-
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
@@ -137,7 +131,6 @@ jobs:
           path: ${{ steps.dist-arch.outputs.name }}
           if-no-files-found: error
           retention-days: 30
-
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
@@ -145,39 +138,32 @@ jobs:
           file: ${{ steps.dist-arch.outputs.name }}
           asset_name: ${{ steps.dist-arch.outputs.name }}
           tag: ${{ github.ref }}
-
   docker:
     name: Build docker image
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v6
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3 # Action page: <https://github.com/docker/setup-qemu-action>
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3 # Action page: <https://github.com/docker/setup-buildx-action>
-
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ secrets.GHCR_LOGIN }}
           password: ${{ secrets.GHCR_PASSWORD }}
-
       - name: Generate builder values
         id: values
         run: |
           echo "version_full=$(echo ${GITHUB_REF##*/} | sed -e 's/^[vV ]*//')" >> $GITHUB_OUTPUT
           echo "timestamp=$(echo $(date +%FT%T%z))" >> $GITHUB_OUTPUT
-
       - name: Build image
         uses: docker/build-push-action@v6 # Action page: <https://github.com/docker/build-push-action>
         with:
