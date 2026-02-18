@@ -167,7 +167,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/driver"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/amqp/refs/heads/master/schema.json#/definitions/driver"
         }
       ]
     },
@@ -240,7 +240,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/driver"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/beanstalk/refs/heads/master/schema.json#/definitions/driver"
         }
       ]
     },
@@ -285,10 +285,10 @@
                   "$ref": "https://raw.githubusercontent.com/roadrunner-server/jobs/refs/heads/master/schema.json#/definitions/PipelineProperties/prefetch"
                 },
                 "permissions": {
-                  "$ref": "#/definitions/permissions"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/boltdb/refs/heads/master/schema.json#/definitions/permissions"
                 },
                 "file": {
-                  "$ref": "#/definitions/file"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/boltdb/refs/heads/master/schema.json#/definitions/file"
                 }
               }
             }
@@ -300,10 +300,10 @@
           "description": "Configuration options for the BoltDB driver.",
           "properties": {
             "file": {
-              "$ref": "#/definitions/file"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/boltdb/refs/heads/master/schema.json#/definitions/file"
             },
             "permissions": {
-              "$ref": "#/definitions/permissions"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/boltdb/refs/heads/master/schema.json#/definitions/permissions"
             },
             "interval": {
               "description": "TTL keys check interval in seconds. It's safe to use 1 second here, but can be a little costly to performance. If you set this to zero, 60 will be used.",
@@ -316,7 +316,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/driver"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/boltdb/refs/heads/master/schema.json#/definitions/driver"
         }
       ]
     },
@@ -538,15 +538,15 @@
         },
         "max_connection_idle": {
           "description": " MaxConnectionIdle is a duration for the amount of time after which an idle connection would be closed by sending a GoAway. Idle duration is defined by the most recent time the number of outstanding RPCs became zero or since the connection was established. Defaults to infinite.",
-          "$ref": "#/$defs/duration"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/grpc/refs/heads/master/schema.json#/$defs/duration"
         },
         "max_connection_age": {
           "description": "The maximum duration a connection may exist before it will be closed by sending a GoAway. A random jitter of +/-10% will be added to MaxConnectionAge to spread out connection storms. Defaults to infinite.",
-          "$ref": "#/$defs/duration"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/grpc/refs/heads/master/schema.json#/$defs/duration"
         },
         "max_connection_age_grace": {
           "description": "The duration after MaxConnectionAge after which the connection will be forcibly closed. Defaults to infinite.",
-          "$ref": "#/$defs/duration"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/grpc/refs/heads/master/schema.json#/$defs/duration"
         },
         "max_concurrent_streams": {
           "description": "The maximum number of concurrent streams. Empty or 0 defaults to 10.",
@@ -555,12 +555,12 @@
         },
         "ping_time": {
           "description": "Duration of no activity after which the server pings the client to see if the transport is still alive. If set below 1s, a minimum value of 1s will be used instead.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/grpc/refs/heads/master/schema.json#/$defs/duration",
           "default": "2h"
         },
         "timeout": {
           "description": "The duration to wait for a response to a keepalive check, after which the connection is closed.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/grpc/refs/heads/master/schema.json#/$defs/duration",
           "default": "20s"
         },
         "pool": {
@@ -652,7 +652,7 @@
           ]
         },
         "uploads": {
-          "$ref": "#/$defs/Uploads"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/Uploads"
         },
         "headers": {
           "description": "HTTP header configuration.",
@@ -715,11 +715,11 @@
             },
             "request": {
               "description": "Custom HTTP headers to add to every request passed to PHP.",
-              "$ref": "#/$defs/Headers"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/Headers"
             },
             "response": {
               "description": "Custom HTTP headers to add to every response from PHP.",
-              "$ref": "#/$defs/Headers"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/Headers"
             }
           }
         },
@@ -775,11 +775,11 @@
             },
             "request": {
               "description": "Custom HTTP headers to add to every request for static files.",
-              "$ref": "#/$defs/Headers"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/Headers"
             },
             "response": {
               "description": "Custom HTTP headers to add to every response from static files.",
-              "$ref": "#/$defs/Headers"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/Headers"
             }
           }
         },
@@ -787,16 +787,16 @@
           "$ref": "https://raw.githubusercontent.com/roadrunner-server/pool/refs/heads/master/schema.json"
         },
         "ssl": {
-          "$ref": "#/$defs/SSL"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/SSL"
         },
         "fcgi": {
-          "$ref": "#/$defs/FCGI"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/FCGI"
         },
         "http2": {
-          "$ref": "#/$defs/HTTP2"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/HTTP2"
         },
         "http3": {
-          "$ref": "#/$defs/HTTP3"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/HTTP3"
         }
       },
       "$defs": {
@@ -951,7 +951,7 @@
               ]
             },
             "client_auth_type": {
-              "$ref": "#/$defs/ClientAuthType"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/ClientAuthType"
             }
           }
         },
@@ -1032,10 +1032,10 @@
               ]
             },
             "cert": {
-              "$ref": "#/$defs/SSL/properties/cert"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/SSL/properties/cert"
             },
             "key": {
-              "$ref": "#/$defs/SSL/properties/key"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/http/refs/heads/master/schema.json#/$defs/SSL/properties/key"
             }
           }
         },
@@ -1292,7 +1292,7 @@
                       "default": 1
                     },
                     "consumer_offset": {
-                      "$ref": "#/definitions/Offset"
+                      "$ref": "https://raw.githubusercontent.com/roadrunner-server/kafka/refs/heads/master/schema.json#/definitions/Offset"
                     },
                     "consume_partitions": {
                       "type": "object",
@@ -1306,7 +1306,7 @@
                           "additionalProperties": false,
                           "patternProperties": {
                             "^[0-9]+$": {
-                              "$ref": "#/definitions/Offset"
+                              "$ref": "https://raw.githubusercontent.com/roadrunner-server/kafka/refs/heads/master/schema.json#/definitions/Offset"
                             }
                           }
                         }
@@ -1315,7 +1315,7 @@
                   }
                 },
                 "sasl_options": {
-                  "$ref": "#/definitions/SASL"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/kafka/refs/heads/master/schema.json#/definitions/SASL"
                 }
               }
             }
@@ -1378,10 +1378,10 @@
               ]
             },
             "sasl": {
-              "$ref": "#/definitions/SASL"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/kafka/refs/heads/master/schema.json#/definitions/SASL"
             },
             "ping": {
-              "$ref": "#/definitions/Ping"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/kafka/refs/heads/master/schema.json#/definitions/Ping"
             }
           }
         },
@@ -1481,7 +1481,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/driver"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/kafka/refs/heads/master/schema.json#/definitions/driver"
         }
       ]
     },
@@ -1495,25 +1495,25 @@
       "additionalProperties": false,
       "properties": {
         "mode": {
-          "$ref": "#/$defs/LogMode"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogMode"
         },
         "level": {
-          "$ref": "#/$defs/LogLevel"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogLevel"
         },
         "line_ending": {
-          "$ref": "#/$defs/LogLineEnding"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogLineEnding"
         },
         "encoding": {
-          "$ref": "#/$defs/LogEncoding"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogEncoding"
         },
         "output": {
-          "$ref": "#/$defs/LogOutput"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogOutput"
         },
         "err_output": {
-          "$ref": "#/$defs/LogOutput"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogOutput"
         },
         "file_logger_options": {
-          "$ref": "#/$defs/FileLoggerOptions"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/FileLoggerOptions"
         },
         "channels": {
           "description": "You can configure logging for each plugin individually. The key is the plugin name and the value is logging options in same format as the parent.",
@@ -1528,25 +1528,25 @@
               "minProperties": 1,
               "properties": {
                 "mode": {
-                  "$ref": "#/$defs/LogMode"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogMode"
                 },
                 "level": {
-                  "$ref": "#/$defs/LogLevel"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogLevel"
                 },
                 "line_ending": {
-                  "$ref": "#/$defs/LogLineEnding"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogLineEnding"
                 },
                 "encoding": {
-                  "$ref": "#/$defs/LogEncoding"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogEncoding"
                 },
                 "output": {
-                  "$ref": "#/$defs/LogOutput"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogOutput"
                 },
                 "err_output": {
-                  "$ref": "#/$defs/LogOutput"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/LogOutput"
                 },
                 "file_logger_options": {
-                  "$ref": "#/$defs/FileLoggerOptions"
+                  "$ref": "https://raw.githubusercontent.com/roadrunner-server/logger/refs/heads/master/schema.json#/$defs/FileLoggerOptions"
                 }
               }
             }
@@ -1835,7 +1835,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/driver"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/nats/refs/heads/master/schema.json#/definitions/driver"
         }
       ]
     },
@@ -2019,7 +2019,7 @@
         "dial_timeout": {
           "title": "Dial Timeout",
           "description": "The timeout when attempting to connect to Redis. Default or zero means 5s.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": 0
         },
         "max_retries": {
@@ -2031,13 +2031,13 @@
         "min_retry_backoff": {
           "title": "Minimum Retry Backoff",
           "description": "The minimum backoff duration when retrying connection attempts. Default or zero means 8s.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": 0
         },
         "max_retry_backoff": {
           "title": "Maximum Retry Backoff",
           "description": "The maximum backoff duration when retrying connection attempts. Default or zero means 512s.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": 0
         },
         "pool_size": {
@@ -2055,35 +2055,35 @@
         "max_conn_age": {
           "title": "Maximum Connection Age",
           "description": "The maximum age of open Redis connections. Default or zero means no limit.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": "0s"
         },
         "read_timeout": {
           "title": "Read Timeout",
           "description": "The timeout when reading from a Redis node. Default or zero means 3s.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": "0s"
         },
         "write_timeout": {
           "title": "Write Timeout",
           "description": "The timeout when writing to a Redis node. Default or zero means equivalent to `read_timeout`.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": "0s"
         },
         "pool_timeout": {
           "title": "Pool Timeout",
-          "$ref": "#/$defs/duration"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration"
         },
         "idle_timeout": {
           "title": "Idle Timeout",
           "description": "The timeout of idle connections to Redis. Default or zero means 5m.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": "0s"
         },
         "idle_check_freq": {
           "title": "Idle Check Frequency",
           "description": "The time between checks for idle connections to Redis. Default or zero means 1m.",
-          "$ref": "#/$defs/duration",
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/redis/refs/heads/master/schema.json#/$defs/duration",
           "default": "0s"
         },
         "read_only": {
@@ -2159,7 +2159,7 @@
                   ]
                 },
                 "prometheus": {
-                  "$ref": "#/$defs/Prometheus"
+                  "$ref": "https://raw.githubusercontent.com/temporalio/roadrunner-temporal/refs/heads/master/schema.json#/$defs/Prometheus"
                 }
               }
             },
@@ -2175,7 +2175,7 @@
                   ]
                 },
                 "statsd": {
-                  "$ref": "#/$defs/Statsd"
+                  "$ref": "https://raw.githubusercontent.com/temporalio/roadrunner-temporal/refs/heads/master/schema.json#/$defs/Statsd"
                 }
               }
             }
@@ -2346,10 +2346,10 @@
               "default": "false"
             },
             "user": {
-              "$ref": "#/$defs/User"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/server/refs/heads/master/schema.json#/$defs/User"
             },
             "env": {
-              "$ref": "#/$defs/EnvironmentVariables"
+              "$ref": "https://raw.githubusercontent.com/roadrunner-server/server/refs/heads/master/schema.json#/$defs/EnvironmentVariables"
             }
           }
         },
@@ -2362,7 +2362,7 @@
           ]
         },
         "user": {
-          "$ref": "#/$defs/User"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/server/refs/heads/master/schema.json#/$defs/User"
         },
         "group": {
           "description": "Group name (not GID) for the worker processes. The RR process user group will be used if not provided. The RoadRunner process must be run as root for this to work.",
@@ -2373,7 +2373,7 @@
           ]
         },
         "env": {
-          "$ref": "#/$defs/EnvironmentVariables"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/server/refs/heads/master/schema.json#/$defs/EnvironmentVariables"
         },
         "relay": {
           "description": "Worker relay method. Can be 'pipes', a TCP address (e.g. tcp://127.0.0.1:6002) or a socket (e.g. unix:///var/run/rr.sock).",
@@ -2672,7 +2672,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/driver"
+          "$ref": "https://raw.githubusercontent.com/roadrunner-server/sqs/refs/heads/master/schema.json#/definitions/driver"
         }
       ]
     },
