@@ -150,12 +150,14 @@ func NewCommand(override *[]string, cfgFile *string, silent *bool, experimental 
 					args := os.Args
 					env := os.Environ()
 
-					if err := cont.Stop(); err != nil {
+					if err = cont.Stop(); err != nil {
 						log(fmt.Sprintf("restart failed: %s", err), *silent)
 						return errors.E("failed to restart")
 					}
 
-					err = syscall.Exec(executable, args, env)
+					// safe: we're reexecuting the same binary with the same arguments and environment variables, so there is no risk of command injection
+					// nosemgrep
+					err = syscall.Exec(executable, args, env) //nolint:gosec
 					if err != nil {
 						log(fmt.Sprintf("restart failed: %s", err), *silent)
 						return errors.E("failed to restart")
