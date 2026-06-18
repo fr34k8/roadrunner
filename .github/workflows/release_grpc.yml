@@ -46,7 +46,7 @@ jobs:
         with:
           go-version: stable
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: 'roadrunner-server/grpc'
       - name: Install musl
